@@ -1,13 +1,14 @@
-import { FirebaseOptions, initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { FirebaseOptions, initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig: FirebaseOptions = {
-  apiKey: "AIzaSyBp70R8r_3rhxt4tE53IgJNpf0JJW8Y67M",
-  authDomain: "disney-app-31517.firebaseapp.com",
-  projectId: "disney-app-31517",
-  storageBucket: "disney-app-31517.appspot.com",
-  messagingSenderId: "499300224058",
-  appId: "1:499300224058:web:b427771efa9925b1beb903",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY?.toString(),
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN?.toString(),
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID?.toString(),
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET?.toString(),
+  messagingSenderId:
+    import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID?.toString(),
+  appId: import.meta.env.VITE_FIREBASE_APP_ID?.toString(),
 };
 
 const app = initializeApp(firebaseConfig);
