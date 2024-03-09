@@ -9,8 +9,7 @@ const Home = () => {
 
   const handleLogout = async () => {
     await logout();
-
-    toast.info('User logged out successfully');
+    toast.success('User logged out successfully');
   };
 
   if (loading) return <h1>Loading...</h1>;

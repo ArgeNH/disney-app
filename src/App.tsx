@@ -5,7 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
-    <div className="h-screen bg-blue-400">
+    <div className="h-screen bg-gradient">
       <AuthProvider>
         <Toaster richColors expand />
         <AppRouter />
