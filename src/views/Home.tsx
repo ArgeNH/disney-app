@@ -32,20 +32,22 @@ const Home = () => {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div className="h-full bg-brand-900/60">
+    <>
       <Navbar />
-      <div className="container mx-auto pt-20">
-        <Tabs />
-      </div>
-
-      <section className="flex justify-center items-center mt-3 px-6">
-        <div className="grid grid-cols-4 gap-4 w-full h-screen">
-          {movies.map((movie) => (
-            <CardMovie key={movie.id} movie={movie} />
-          ))}
+      <div className="h-full bg-brand-900/60 px-6 pb-4">
+        <div className="container mx-auto pt-20">
+          <Tabs />
         </div>
-      </section>
-    </div>
+
+        <section className="flex justify-center items-center mt-3">
+          <div className="grid grid-cols-4 gap-4 w-full h-screen">
+            {movies.map((movie) => (
+              <CardMovie key={movie.id} movie={movie} />
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
