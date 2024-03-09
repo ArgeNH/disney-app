@@ -1,7 +1,16 @@
+import ComedySvg from '../components/icons/ComedySvg';
+import HorrorSvg from '../components/icons/HorrorSvg';
+
 export const URL: string = 'https://api.themoviedb.org/3';
 export const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
 
-export const CATEGORIES: { [key: string]: number | string }[] = [
+type CategoriesType = {
+  id: number;
+  name: string;
+  Icon?: () => JSX.Element;
+};
+
+export const CATEGORIES: CategoriesType[] = [
   {
     id: 28,
     name: 'Action',
@@ -13,6 +22,7 @@ export const CATEGORIES: { [key: string]: number | string }[] = [
   {
     id: 35,
     name: 'Comedy',
+    Icon: ComedySvg,
   },
   {
     id: 18,
@@ -21,5 +31,6 @@ export const CATEGORIES: { [key: string]: number | string }[] = [
   {
     id: 27,
     name: 'Horror',
+    Icon: HorrorSvg,
   },
 ];
