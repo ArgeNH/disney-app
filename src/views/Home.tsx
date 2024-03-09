@@ -1,24 +1,20 @@
-import { toast } from 'sonner';
-
 import { useAuth } from '../context/AuthContext';
+import Navbar from '../components/header';
+import Tabs from '../components/tabs';
 
 const Home = () => {
-  const { user, logout, loading } = useAuth();
-
-  console.log(user);
-
-  const handleLogout = async () => {
-    await logout();
-    toast.success('User logged out successfully');
-  };
+  const { user, loading } = useAuth();
 
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
-      <h1>Welcome {user?.email}</h1>
+    <div className="h-screen bg-brand-900/60">
+      <Navbar />
+      <div className="container mx-auto pt-16">
+        <h1>Welcome {user?.email}</h1>
 
-      <button onClick={handleLogout}>Log out</button>
+        <Tabs />
+      </div>
     </div>
   );
 };
