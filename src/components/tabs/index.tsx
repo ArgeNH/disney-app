@@ -6,7 +6,7 @@ const Tabs = () => {
       <ul className="menu bg-brand-600/20 bg-opacity-15 border-dashed border-[0.5px] lg:menu-horizontal rounded-box">
         {CATEGORIES.map(({ id, name, Icon }) => (
           <li key={id}>
-            <a className="hover:text-brand-700">
+            <a className="text-word-100 hover:text-brand-700">
               {Icon && <Icon />}
               {name}
             </a>

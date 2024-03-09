@@ -1,0 +1,17 @@
+.info-container {
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Añadir transición para la opacidad */
+  transform: translateY(10%);
+  opacity: 0; /* Ocultar inicialmente */
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  padding-bottom: 1rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-container:hover .info-container {
+  transform: translateY(0%);
+  opacity: 1; /* Mostrar en hover */
+}

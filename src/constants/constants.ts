@@ -3,6 +3,7 @@ import HorrorSvg from '../components/icons/HorrorSvg';
 
 export const URL: string = 'https://api.themoviedb.org/3';
 export const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
+export const IMAGE_URL = import.meta.env.VITE_IMAGES_URL;
 
 type CategoriesType = {
   id: number;

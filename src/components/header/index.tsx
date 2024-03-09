@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-brand-600 bg-opacity-15 filter backdrop-blur-[4px] fixed">
+      <div className="navbar bg-brand-600 bg-opacity-15 filter backdrop-blur-[4px] fixed z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="lg:hidden mr-4">
@@ -37,17 +37,23 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/" className="hover:text-brand-700">
+                <Link to="/" className="text-word-100 hover:text-brand-700">
                   HOME
                 </Link>
               </li>
               <li>
-                <Link to="/watch_list" className="hover:text-brand-700">
+                <Link
+                  to="/watch_list"
+                  className="text-word-100 hover:text-brand-700"
+                >
                   WATCH LIST
                 </Link>
               </li>
               <li>
-                <Link to="/favorites" className="hover:text-brand-700">
+                <Link
+                  to="/favorites"
+                  className="text-word-100 hover:text-brand-700"
+                >
                   FAVORITES
                 </Link>
               </li>
@@ -75,17 +81,23 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to="/" className="hover:text-brand-700">
+              <Link to="/" className="text-word-100 hover:text-brand-700">
                 HOME
               </Link>
             </li>
             <li>
-              <Link to="/watch_list" className="hover:text-brand-700">
+              <Link
+                to="/watch_list"
+                className="text-word-100 hover:text-brand-700"
+              >
                 WATCH LIST
               </Link>
             </li>
             <li>
-              <Link to="/favorites" className="hover:text-brand-700">
+              <Link
+                to="/favorites"
+                className="text-word-100 hover:text-brand-700"
+              >
                 FAVORITES
               </Link>
             </li>
