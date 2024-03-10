@@ -80,6 +80,13 @@ You can register on the site to use it and see each of its features [here](https
 
 You can log in on the site to use it and see each of its features [here](https://disney-app-kappa.vercel.app/login)
 
+Or you can also use this email and password to perform your tests
+
+```bash
+email: test@gmail.com
+password: Secure123@
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With

@@ -11,6 +11,14 @@ const WatchList = () => {
           <CardMovie key={movie.id} movie={movie} />
         ))}
       </div>
+
+      {watchLaterMovies.length === 0 && (
+        <div className="flex items-center justify-center h-1/2">
+          <p className="text-2xl font-bold text-gray-500">
+            No movies in watch list
+          </p>
+        </div>
+      )}
     </Layout>
   );
 };
