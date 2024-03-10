@@ -26,3 +26,8 @@ export type Movie = {
   isFavorite?: boolean;
   isWatchLater?: boolean;
 };
+
+export interface FormInput {
+  email: string;
+  password: string;
+}

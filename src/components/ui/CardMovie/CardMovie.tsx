@@ -12,9 +12,10 @@ import './card.css';
 
 interface CardMovieProps {
   movie: Movie;
+  isHome?: boolean;
 }
 
-const CardMovie = ({ movie }: CardMovieProps) => {
+const CardMovie = ({ movie, isHome = false }: CardMovieProps) => {
   const { setIdMovie, selectFavoriteMovie, selectWatchLaterMovie } =
     useMovies();
 
@@ -72,23 +73,27 @@ const CardMovie = ({ movie }: CardMovieProps) => {
           </h2>
         </div>
         <div className="flex justify-between px-4">
-          <IconButton
-            icon={<AddSvg />}
-            tooltip="Add to Watch list"
-            direction="tooltip-right"
-            action={() => handleAddToWatchLater(movie, user!.uid)}
-          />
+          {isHome && (
+            <>
+              <IconButton
+                icon={<AddSvg />}
+                tooltip="Add to Watch list"
+                direction="tooltip-right"
+                action={() => handleAddToWatchLater(movie, user!.uid)}
+              />
 
-          <IconButton
-            icon={<FavoriteSvg />}
-            tooltip="Add to favorites"
-            action={() => handleAddToFavorites(movie, user!.uid)}
-          />
+              <IconButton
+                icon={<FavoriteSvg />}
+                tooltip="Add to favorites"
+                action={() => handleAddToFavorites(movie, user!.uid)}
+              />
+            </>
+          )}
 
           <IconButton
             icon={<DotSvg />}
             tooltip="More information"
-            direction="tooltip-left"
+            direction={isHome ? 'tooltip-left' : 'tooltip-right'}
             action={() => {
               (
                 document.getElementById('my_modal_4') as HTMLDialogElement

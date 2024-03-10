@@ -1,11 +1,14 @@
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { FormInput } from '../types';
 
 interface FormProps {
   isLogin?: boolean;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  register: UseFormRegister<FormInput>;
+  errors: FieldErrors<FormInput>;
 }
 
-export const Form = ({ isLogin = true, handleChange }: FormProps) => {
+export const Form = ({ isLogin = true, register, errors }: FormProps) => {
   return (
     <>
       <div className="form-control">
@@ -14,13 +17,22 @@ export const Form = ({ isLogin = true, handleChange }: FormProps) => {
         </label>
         <input
           id="email"
-          name="email"
           type="email"
           placeholder="email"
           className="input input-bordered"
-          required
-          onChange={handleChange}
+          {...register('email', {
+            required: 'Email is required',
+            pattern: {
+              value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              message: 'Invalid email format',
+            },
+          })}
         />
+        {errors.email && (
+          <span className="text-xs text-error mt-1">
+            {errors.email.message}
+          </span>
+        )}
       </div>
       <div className="form-control">
         <label className="label" htmlFor="password">
@@ -28,13 +40,38 @@ export const Form = ({ isLogin = true, handleChange }: FormProps) => {
         </label>
         <input
           id="password"
-          name="password"
           type="password"
           placeholder="password"
           className="input input-bordered"
-          required
-          onChange={handleChange}
+          {...register('password', {
+            required: 'Password is required',
+            validate: (value) => {
+              if (isLogin) return true;
+
+              if (!isLogin) {
+                if (value.length < 8) {
+                  return 'Password must have at least 8 characters';
+                }
+
+                if (!value.match(/[a-zA-Z]/)) {
+                  return 'Password must contain at least one letter';
+                }
+                if (!value.match(/[0-9]/)) {
+                  return 'Password must contain at least one number';
+                }
+
+                if (!value.match(/[!@#$%^&*()_+]/)) {
+                  return 'Password must contain at least one special character';
+                }
+              }
+            },
+          })}
         />
+        {errors.password && (
+          <span className="text-xs text-error mt-1">
+            {errors.password.message}
+          </span>
+        )}
         <label className="label">
           <Link
             to={isLogin ? '/register' : '/login'}

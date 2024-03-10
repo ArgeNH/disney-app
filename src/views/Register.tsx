@@ -1,32 +1,24 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
 import { useAuth } from '../context/AuthContext';
 import { handleFirebaseError } from '../utils/handleFirebaseError';
 import { Form } from '../components/Form';
+import { FormInput } from '../types';
 
 const Register = () => {
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormInput>();
 
-  const handleChange = ({
-    target: { name, value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmitRegister = async (user: FormInput) => {
     try {
       await signUp(user.email, user.password);
 
@@ -54,8 +46,11 @@ const Register = () => {
           </p>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-200 bg-opacity-90">
-          <form className="card-body" onSubmit={handleSubmit}>
-            <Form isLogin={false} handleChange={handleChange} />
+          <form
+            className="card-body"
+            onSubmit={handleSubmit(handleSubmitRegister)}
+          >
+            <Form isLogin={false} register={register} errors={errors} />
           </form>
         </div>
       </div>

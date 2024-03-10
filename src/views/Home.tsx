@@ -80,7 +80,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 gap-4 w-full h-screen md:grid-cols-4">
             {movies.map((movie) => (
-              <CardMovie key={movie.id} movie={movie} />
+              <CardMovie key={movie.id} movie={movie} isHome />
             ))}
           </div>
         </section>
