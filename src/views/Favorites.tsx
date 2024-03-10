@@ -1,6 +1,5 @@
-import { useMovies } from '../context/MoviesContext';
+import { useMovies } from '../context';
 import CardMovie from '../components/ui/CardMovie/CardMovie';
-
 import { Layout } from '../components/Layout';
 
 const Favorites = () => {
@@ -10,7 +9,7 @@ const Favorites = () => {
     <Layout title="My Favorites Movies">
       <div className="grid grid-cols-1 gap-4 w-full h-full md:grid-cols-4">
         {favoriteMovies.map((movie) => (
-          <CardMovie key={movie.id} movie={movie} isFavorite />
+          <CardMovie key={movie.id} movie={movie} />
         ))}
       </div>
     </Layout>

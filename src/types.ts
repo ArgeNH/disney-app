@@ -1,13 +1,7 @@
-export enum severity {
-  'error',
-  'warning',
-  'info',
-  'success',
-}
-
-export type Alert = {
-  message: string;
-  severity: severity | null;
+export type CategoryType = {
+  id: number;
+  name: string;
+  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 };
 
 type Genre = {

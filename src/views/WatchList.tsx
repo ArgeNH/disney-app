@@ -1,6 +1,6 @@
+import { useMovies } from '../context';
 import { Layout } from '../components/Layout';
 import CardMovie from '../components/ui/CardMovie/CardMovie';
-import { useMovies } from '../context/MoviesContext';
 
 const WatchList = () => {
   const { watchLaterMovies } = useMovies();

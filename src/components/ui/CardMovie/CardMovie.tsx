@@ -19,8 +19,6 @@ import './card.css';
 
 interface CardMovieProps {
   movie: Movie;
-  isHome?: boolean;
-  isFavorite?: boolean;
 }
 
 const CardMovie = ({ movie }: CardMovieProps) => {
@@ -60,10 +58,8 @@ const CardMovie = ({ movie }: CardMovieProps) => {
       toast.success(`${movie.original_title} Added to watch later`);
     } catch (error) {
       if (error instanceof FirebaseError) {
-        console.log(error.code);
         const errorMessage = handleFirebaseError(error);
         toast.error(errorMessage);
-        console.log(errorMessage);
       } else {
         const msgError =
           error instanceof Error ? error.message : 'An error occurred';
@@ -79,7 +75,6 @@ const CardMovie = ({ movie }: CardMovieProps) => {
       toast.success('Movie removed from favorites');
     } catch (error) {
       if (error instanceof FirebaseError) {
-        console.log(error.code);
         const errorMessage = handleFirebaseError(error);
         toast.error(errorMessage);
       } else {
@@ -97,7 +92,6 @@ const CardMovie = ({ movie }: CardMovieProps) => {
       toast.success('Movie removed from watch list');
     } catch (error) {
       if (error instanceof FirebaseError) {
-        console.log(error.code);
         const errorMessage = handleFirebaseError(error);
         toast.error(errorMessage);
       } else {

@@ -1,8 +1,7 @@
 import { Toaster } from 'sonner';
 
 import AppRouter from './routes';
-import { AuthProvider } from './context/AuthContext';
-import { MoviesProvider } from './context/MoviesContext';
+import { AuthProvider, MoviesProvider } from './context';
 
 function App() {
   return (

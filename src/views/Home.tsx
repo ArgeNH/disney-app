@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { useAuth } from '../context/AuthContext';
-import Navbar from '../components/header';
+import { useAuth } from '../context';
 import Tabs from '../components/tabs';
 import CardMovie from '../components/ui/CardMovie/CardMovie';
-import { Movie } from '../types';
-import { getAllMoviesService } from '../services/api/api';
 import ContentCategory from '../components/ui/ContentCategory';
-import { CategoryType } from '../constants/constants';
+import { getAllMoviesService } from '../services/api/api';
+import { CategoryType, Movie } from '../types';
 
 const Home = () => {
   const { loading } = useAuth();
@@ -40,7 +37,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       <div className="h-full bg-brand-900/60 px-6 pb-4">
         <div className="container mx-auto pt-20">
           <Tabs setSelectCategory={setSelectCategory} />
@@ -80,7 +76,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 gap-4 w-full h-full md:grid-cols-4">
             {movies.map((movie) => (
-              <CardMovie key={movie.id} movie={movie} isHome />
+              <CardMovie key={movie.id} movie={movie} />
             ))}
           </div>
         </section>

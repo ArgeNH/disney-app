@@ -1,5 +1,6 @@
-import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
+
 import { FormInput } from '../types';
 
 interface FormProps {

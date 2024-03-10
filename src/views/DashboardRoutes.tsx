@@ -16,9 +16,6 @@ const DashboardRoutes = () => {
           <Route path="" element={<Home />} />
           <Route path="watch_list" element={<WatchList />} />
           <Route path="favorites" element={<Favorites />} />
-          {/* <Route path="404" element={<Error404 />} /> */}
-
-          {/* <Route path="*" element={<Navigate to="/404" />} /> */}
         </Routes>
       </div>
 

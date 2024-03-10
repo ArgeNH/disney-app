@@ -3,9 +3,9 @@ import { FirebaseError } from 'firebase/app';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
 
-import { useAuth } from '../context/AuthContext';
-import { handleFirebaseError } from '../utils/handleFirebaseError';
+import { useAuth } from '../context';
 import { Form } from '../components/Form';
+import { handleFirebaseError } from '../utils/handleFirebaseError';
 import { FormInput } from '../types';
 
 const Login = () => {
