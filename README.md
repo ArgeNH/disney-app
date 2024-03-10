@@ -74,6 +74,12 @@
 
 <!-- There are many great Disney Apps available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a Disney App that is easy to use and has a lot of features. -->
 
+You can see the demo [here](https://disney-app-kappa.vercel.app/)
+
+You can register on the site to use it and see each of its features [here](https://disney-app-kappa.vercel.app/register)
+
+You can log in on the site to use it and see each of its features [here](https://disney-app-kappa.vercel.app/login)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
