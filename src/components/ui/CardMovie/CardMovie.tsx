@@ -2,11 +2,10 @@ import { FirebaseError } from 'firebase/app';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { IMAGE_URL } from '../../../constants/constants';
-import { useAuth } from '../../../context/AuthContext';
-import { useMovies } from '../../../context/MoviesContext';
-import { Movie } from '../../../types';
+import { useAuth, useMovies } from '../../../context';
 import { IconButton } from '../../buttons/IconButton';
+import { IMAGE_URL } from '../../../constants/constants';
+import { Movie } from '../../../types';
 import { handleFirebaseError } from '../../../utils/handleFirebaseError';
 import {
   AddSvg,

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { useMovies } from '../../context/MoviesContext';
+import { useMovies } from '../../context';
 import { getMovieDetailService } from '../../services/api/api';
 import { Movie } from '../../types';
 import { IMAGE_URL } from '../../constants/constants';
