@@ -12,10 +12,14 @@ interface CardMovieProps {
 
 const CardMovie = ({ movie }: CardMovieProps) => {
   return (
-    <div className="relative w-full bg-cover bg-center rounded-lg overflow-hidden card-container">
+    <div className="relative w-full h-64 bg-cover bg-center rounded-lg overflow-hidden card-container md:h-auto">
       <img
         className="absolute inset-0 w-full h-full object-cover"
-        src={`${IMAGE_URL}${movie?.backdrop_path}`}
+        src={
+          movie?.backdrop_path
+            ? `${IMAGE_URL}${movie?.backdrop_path}`
+            : '/public/noimage.jpeg'
+        }
         alt={movie?.original_title}
       />
       <div id="info" className="info-container">
@@ -42,7 +46,11 @@ const CardMovie = ({ movie }: CardMovieProps) => {
             icon={<DotSvg />}
             tooltip="More information"
             direction="tooltip-left"
-            action={() => console.log('More information')}
+            action={() =>
+              (
+                document.getElementById('my_modal_4') as HTMLDialogElement
+              )?.showModal()
+            }
           />
         </div>
       </div>

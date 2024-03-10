@@ -8,13 +8,13 @@ export const URL: string = 'https://api.themoviedb.org/3';
 export const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
 export const IMAGE_URL = import.meta.env.VITE_IMAGES_URL;
 
-type CategoriesType = {
+export type CategoryType = {
   id: number;
   name: string;
   Icon?: () => JSX.Element;
 };
 
-export const CATEGORIES: CategoriesType[] = [
+export const CATEGORIES: CategoryType[] = [
   {
     id: 28,
     name: 'Action',

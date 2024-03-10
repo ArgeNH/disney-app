@@ -60,7 +60,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link
-            className="text-xl font-bold transition-transform hover:scale-105"
+            className="text-xl font-bold transition-transform hover:scale-110"
             to="/"
           >
             <svg

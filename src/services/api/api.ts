@@ -1,9 +1,9 @@
 import { API_KEY } from '../../constants/constants';
 import { fetchRequest } from '../../helpers/fetchResquest';
 
-export const getAllMoviesService = async () => {
+export const getAllMoviesService = async ({ page }: { page: number }) => {
   const response = await fetchRequest(
-    `/discover/movie?with_companies=2&api_key=${API_KEY}`,
+    `/discover/movie?with_companies=2&api_key=${API_KEY}&page=${page}`,
   );
 
   return response.data;
