@@ -1,4 +1,4 @@
-const FavoriteSvg = () => {
+export const FavoriteSvg = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,5 +16,3 @@ const FavoriteSvg = () => {
     </svg>
   );
 };
-
-export default FavoriteSvg;

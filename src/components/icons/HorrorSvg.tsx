@@ -1,4 +1,4 @@
-const HorrorSvg = () => (
+export const HorrorSvg = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="icon icon-tabler icon-tabler-coffin"
@@ -18,4 +18,3 @@ const HorrorSvg = () => (
     <path d="M13 21h4l2 -12l-2 -6h-4" />
   </svg>
 );
-export default HorrorSvg;

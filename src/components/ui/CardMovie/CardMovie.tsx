@@ -1,10 +1,13 @@
+import { FirebaseError } from 'firebase/app';
+import { toast } from 'sonner';
+
 import { IMAGE_URL } from '../../../constants/constants';
+import { useAuth } from '../../../context/AuthContext';
 import { useMovies } from '../../../context/MoviesContext';
 import { Movie } from '../../../types';
 import { IconButton } from '../../buttons/IconButton';
-import AddSvg from '../../icons/AddSvg';
-import DotSvg from '../../icons/DotSvg';
-import FavoriteSvg from '../../icons/FavoriteSvg';
+import { handleFirebaseError } from '../../../utils/handleFirebaseError';
+import { AddSvg, DotSvg, FavoriteSvg } from '../../icons';
 import './card.css';
 
 interface CardMovieProps {
@@ -12,15 +15,53 @@ interface CardMovieProps {
 }
 
 const CardMovie = ({ movie }: CardMovieProps) => {
-  const { setIdMovie } = useMovies();
+  const { setIdMovie, selectFavoriteMovie, selectWatchLaterMovie } =
+    useMovies();
+
+  const { user } = useAuth();
+
+  const handleAddToFavorites = async (movie: Movie, uid: string) => {
+    try {
+      await selectFavoriteMovie!(movie, uid);
+
+      toast.success(`${movie.original_title} Added to favorites`);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        const errorMessage = handleFirebaseError(error);
+        toast.error(errorMessage);
+      } else {
+        const msgError =
+          error instanceof Error ? error.message : 'An error occurred';
+        toast.error(msgError);
+      }
+    }
+  };
+
+  const handleAddToWatchLater = async (movie: Movie, uid: string) => {
+    try {
+      await selectWatchLaterMovie!(movie, uid);
+
+      toast.success(`${movie.original_title} Added to watch later`);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        const errorMessage = handleFirebaseError(error);
+        toast.error(errorMessage);
+      } else {
+        const msgError =
+          error instanceof Error ? error.message : 'An error occurred';
+        toast.error(msgError);
+      }
+    }
+  };
+
   return (
-    <div className="relative w-full h-64 bg-cover bg-center rounded-lg overflow-hidden card-container md:h-auto">
+    <div className="relative w-full h-52 bg-cover bg-center rounded-lg overflow-hidden card-container">
       <img
         className="absolute inset-0 w-full h-full object-cover"
         src={
           movie?.backdrop_path
             ? `${IMAGE_URL}${movie?.backdrop_path}`
-            : '/public/noimage.jpeg'
+            : '/noimage.jpeg'
         }
         alt={movie?.original_title}
       />
@@ -35,13 +76,13 @@ const CardMovie = ({ movie }: CardMovieProps) => {
             icon={<AddSvg />}
             tooltip="Add to Watch list"
             direction="tooltip-right"
-            action={() => console.log('Add to Watch list')}
+            action={() => handleAddToWatchLater(movie, user!.uid)}
           />
 
           <IconButton
             icon={<FavoriteSvg />}
             tooltip="Add to favorites"
-            action={() => console.log('Add to favorites')}
+            action={() => handleAddToFavorites(movie, user!.uid)}
           />
 
           <IconButton
@@ -53,9 +94,7 @@ const CardMovie = ({ movie }: CardMovieProps) => {
                 document.getElementById('my_modal_4') as HTMLDialogElement
               )?.showModal();
 
-              if (movie?.id && setIdMovie) {
-                setIdMovie(movie.id);
-              }
+              setIdMovie!(movie.id);
             }}
           />
         </div>

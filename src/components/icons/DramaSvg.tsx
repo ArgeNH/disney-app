@@ -1,4 +1,4 @@
-const DramaSvg = () => (
+export const DramaSvg = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="icon icon-tabler icon-tabler-masks-theater"
@@ -22,4 +22,3 @@ const DramaSvg = () => (
     <path d="M6 12c.764 -.51 1.528 -.63 2.291 -.36" />
   </svg>
 );
-export default DramaSvg;

@@ -1,4 +1,4 @@
-const AnimationSvg = () => (
+export const AnimationSvg = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="icon icon-tabler icon-tabler-keyframes"
@@ -16,4 +16,3 @@ const AnimationSvg = () => (
     <path d="m13 5 4.586 5.836a1.844 1.844 0 0 1 0 2.328L13 19" />
   </svg>
 );
-export default AnimationSvg;

@@ -1,8 +1,10 @@
-import ActionSvg from '../components/icons/ActionSvg';
-import AnimationSvg from '../components/icons/AnimationSvg';
-import ComedySvg from '../components/icons/ComedySvg';
-import DramaSvg from '../components/icons/DramaSvg';
-import HorrorSvg from '../components/icons/HorrorSvg';
+import {
+  ActionSvg,
+  AnimationSvg,
+  ComedySvg,
+  DramaSvg,
+  HorrorSvg,
+} from '../components/icons';
 
 export const URL: string = 'https://api.themoviedb.org/3';
 export const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
