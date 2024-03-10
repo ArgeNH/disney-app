@@ -26,8 +26,8 @@ export const MoviesContext = createContext<MoviesContextType>(initialValue);
 
 export const MoviesProvider = ({ children }: PropsWithChildren) => {
   const [idMovie, setIdMovie] = useState<number | null>(null);
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
-  const [watchLaterMovies, setWatchLaterMovies] = useState<Movie[]>([]);
+  const [favoriteMovies] = useState<Movie[]>([]); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [watchLaterMovies] = useState<Movie[]>([]);
 
   return (
     <MoviesContext.Provider
