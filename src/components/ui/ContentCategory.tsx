@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
+import { getMoviesPerCategoryService } from '@nh/services/api/api';
 import CardMovie from './CardMovie/CardMovie';
 import { Skeleton } from '../Skeleton';
-import { getMoviesPerCategoryService } from '../../services/api/api';
-import { CategoryType, Movie } from '../../types';
+import { CategoryType, Movie } from '@nh/types';
 
 interface ContentCategoryProps {
   selectCategory: CategoryType | null;

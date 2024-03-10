@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { useAuth } from '../context';
-import Tabs from '../components/tabs';
-import CardMovie from '../components/ui/CardMovie/CardMovie';
-import ContentCategory from '../components/ui/ContentCategory';
-import { getAllMoviesService } from '../services/api/api';
-import { CategoryType, Movie } from '../types';
+import { useAuth } from '@nh/context';
+import Tabs from '@nh/components/tabs';
+import CardMovie from '@nh/components/ui/CardMovie/CardMovie';
+import ContentCategory from '@nh/components/ui/ContentCategory';
+import { getAllMoviesService } from '@nh/services/api/api';
+import { Movie, CategoryType } from '@nh/types';
 
 const Home = () => {
   const { loading } = useAuth();

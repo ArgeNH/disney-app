@@ -1,5 +1,5 @@
-import { CATEGORIES } from '../../constants/constants';
-import { CategoryType } from '../../types';
+import { CATEGORIES } from '@nh/constants/constants';
+import { CategoryType } from '@nh/types';
 
 interface TabsProps {
   setSelectCategory: React.Dispatch<React.SetStateAction<CategoryType | null>>;

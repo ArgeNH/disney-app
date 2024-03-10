@@ -1,6 +1,6 @@
-import { useMovies } from '../context';
-import CardMovie from '../components/ui/CardMovie/CardMovie';
-import { Layout } from '../components/Layout';
+import { useMovies } from '@nh/context';
+import { Layout } from '@nh/components/Layout';
+import CardMovie from '@nh/components/ui/CardMovie/CardMovie';
 
 const Favorites = () => {
   const { favoriteMovies } = useMovies();

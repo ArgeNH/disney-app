@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { useAuth } from '../context';
+import { useAuth } from '@nh/context';
 
 const PublicRoute = () => {
   const { user, loading } = useAuth();

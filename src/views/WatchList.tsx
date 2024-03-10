@@ -1,6 +1,6 @@
-import { useMovies } from '../context';
-import { Layout } from '../components/Layout';
-import CardMovie from '../components/ui/CardMovie/CardMovie';
+import { useMovies } from '@nh/context';
+import { Layout } from '@nh/components/Layout';
+import CardMovie from '@nh/components/ui/CardMovie/CardMovie';
 
 const WatchList = () => {
   const { watchLaterMovies } = useMovies();

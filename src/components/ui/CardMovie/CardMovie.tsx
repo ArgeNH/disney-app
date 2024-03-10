@@ -2,18 +2,19 @@ import { FirebaseError } from 'firebase/app';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { useAuth, useMovies } from '../../../context';
-import { IconButton } from '../../buttons/IconButton';
-import { IMAGE_URL } from '../../../constants/constants';
-import { Movie } from '../../../types';
-import { handleFirebaseError } from '../../../utils/handleFirebaseError';
+import { useAuth, useMovies } from '@nh/context';
+import { IconButton } from '@nh/components/buttons/IconButton';
+import { handleFirebaseError } from '@nh/utils/handleFirebaseError';
 import {
   AddSvg,
   DotSvg,
   FavoriteSvg,
   NoFavoriteSvg,
   RemoveSvg,
-} from '../../icons';
+} from '@nh/components/icons';
+import { IMAGE_URL } from '@nh/constants/constants';
+import { Movie } from '@nh/types';
+
 import './card.css';
 
 interface CardMovieProps {

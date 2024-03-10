@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext, useState, useEffect } from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   collection,
   deleteDoc,
@@ -7,11 +8,10 @@ import {
   getDocs,
   setDoc,
 } from 'firebase/firestore';
-import type { PropsWithChildren } from 'react';
 
-import { Movie } from '../types';
-import { db } from '../services/firebase/firebase';
 import { useAuth } from './AuthContext';
+import { db } from '@nh/services/firebase/firebase';
+import { Movie } from '@nh/types';
 
 type MoviesContextType = {
   idMovie: number | null;

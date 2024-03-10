@@ -4,8 +4,8 @@ import {
   ComedySvg,
   DramaSvg,
   HorrorSvg,
-} from '../components/icons';
-import { CategoryType } from '../types';
+} from '@nh/components/icons';
+import { CategoryType } from '@nh/types';
 
 export const URL: string = 'https://api.themoviedb.org/3';
 export const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;

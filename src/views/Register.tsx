@@ -3,10 +3,10 @@ import { FirebaseError } from 'firebase/app';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-import { useAuth } from '../context';
-import { Form } from '../components/Form';
-import { handleFirebaseError } from '../utils/handleFirebaseError';
-import { FormInput } from '../types';
+import { useAuth } from '@nh/context';
+import { Form } from '@nh/components/Form';
+import { handleFirebaseError } from '@nh/utils/handleFirebaseError';
+import { FormInput } from '@nh/types';
 
 const Register = () => {
   const { signUp } = useAuth();

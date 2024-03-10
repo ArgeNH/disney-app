@@ -1,5 +1,5 @@
-import { API_KEY } from '../../constants/constants';
-import { fetchRequest } from '../../helpers/fetchResquest';
+import { API_KEY } from '@nh/constants/constants';
+import { fetchRequest } from '@nh/helpers/fetchResquest';
 
 export const getAllMoviesService = async ({ page }: { page: number }) => {
   const response = await fetchRequest(

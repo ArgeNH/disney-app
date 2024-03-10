@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { useMovies } from '../../context';
-import { getMovieDetailService } from '../../services/api/api';
-import { Movie } from '../../types';
-import { IMAGE_URL } from '../../constants/constants';
+import { useMovies } from '@nh/context';
+import { getMovieDetailService } from '@nh/services/api/api';
+import { Movie } from '@nh/types';
+import { IMAGE_URL } from '@nh/constants/constants';
 
 const ContentDetails = () => {
   const { idMovie } = useMovies();

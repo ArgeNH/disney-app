@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 
-import { FormInput } from '../types';
-
+import { FormInput } from '@nh/types';
 interface FormProps {
   isLogin?: boolean;
   register: UseFormRegister<FormInput>;

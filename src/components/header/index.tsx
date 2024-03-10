@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 
-import { useAuth } from '../../context';
+import { useAuth } from '@nh/context';
 
 const Navbar = () => {
   const { logout, user } = useAuth();
