@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Home from './views/Home';
 import Login from './views/Login';
 import Register from './views/Register';
 import ProtectedRoute from './views/ProtectedRoute';
 import PublicRoute from './views/PublicRoute';
+import DashboardRoutes from './views/DashboardRoutes';
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<ProtectedRoute />}>
-        <Route index element={<Home />} />
+      <Route path="/*" element={<ProtectedRoute />}>
+        <Route path="*" element={<DashboardRoutes />} />
       </Route>
 
       <Route path="/*" element={<PublicRoute />}>
