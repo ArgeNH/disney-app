@@ -1,4 +1,5 @@
 import { IMAGE_URL } from '../../../constants/constants';
+import { useMovies } from '../../../context/MoviesContext';
 import { Movie } from '../../../types';
 import { IconButton } from '../../buttons/IconButton';
 import AddSvg from '../../icons/AddSvg';
@@ -11,6 +12,7 @@ interface CardMovieProps {
 }
 
 const CardMovie = ({ movie }: CardMovieProps) => {
+  const { setIdMovie } = useMovies();
   return (
     <div className="relative w-full h-64 bg-cover bg-center rounded-lg overflow-hidden card-container md:h-auto">
       <img
@@ -46,11 +48,15 @@ const CardMovie = ({ movie }: CardMovieProps) => {
             icon={<DotSvg />}
             tooltip="More information"
             direction="tooltip-left"
-            action={() =>
+            action={() => {
               (
                 document.getElementById('my_modal_4') as HTMLDialogElement
-              )?.showModal()
-            }
+              )?.showModal();
+
+              if (movie?.id && setIdMovie) {
+                setIdMovie(movie.id);
+              }
+            }}
           />
         </div>
       </div>

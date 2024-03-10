@@ -2,13 +2,16 @@ import { Toaster } from 'sonner';
 
 import AppRouter from './routes';
 import { AuthProvider } from './context/AuthContext';
+import { MoviesProvider } from './context/MoviesContext';
 
 function App() {
   return (
     <div>
       <AuthProvider>
-        <Toaster richColors expand />
-        <AppRouter />
+        <MoviesProvider>
+          <Toaster richColors expand />
+          <AppRouter />
+        </MoviesProvider>
       </AuthProvider>
     </div>
   );

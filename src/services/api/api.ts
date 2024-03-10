@@ -14,13 +14,11 @@ export const getMoviesPerCategoryService = async (categoryId: number) => {
     `/discover/movie?with_companies=2&with_genres=${categoryId}&api_key=${API_KEY}`,
   );
 
-  console.log(response);
   return response.data;
 };
 
 export const getMovieDetailService = async (movieId: number) => {
   const response = await fetchRequest(`/movie/${movieId}?api_key=${API_KEY}`);
 
-  console.log(response);
   return response.data;
 };
