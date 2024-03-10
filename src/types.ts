@@ -16,6 +16,7 @@ type Genre = {
 };
 
 export type Movie = {
+  uid?: string;
   id: number;
   original_title: string;
   backdrop_path: string;

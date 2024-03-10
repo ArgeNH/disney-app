@@ -6,3 +6,5 @@ export * from './ComedySvg';
 export * from './DotSvg';
 export * from './DramaSvg';
 export * from './FavoriteSvg';
+export * from './NoFavoriteSvg';
+export * from './RemoveSvg';

@@ -1,4 +1,5 @@
 import { FirebaseError } from 'firebase/app';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'sonner';
 
 import { IMAGE_URL } from '../../../constants/constants';
@@ -7,19 +8,33 @@ import { useMovies } from '../../../context/MoviesContext';
 import { Movie } from '../../../types';
 import { IconButton } from '../../buttons/IconButton';
 import { handleFirebaseError } from '../../../utils/handleFirebaseError';
-import { AddSvg, DotSvg, FavoriteSvg } from '../../icons';
+import {
+  AddSvg,
+  DotSvg,
+  FavoriteSvg,
+  NoFavoriteSvg,
+  RemoveSvg,
+} from '../../icons';
 import './card.css';
 
 interface CardMovieProps {
   movie: Movie;
   isHome?: boolean;
+  isFavorite?: boolean;
 }
 
-const CardMovie = ({ movie, isHome = false }: CardMovieProps) => {
-  const { setIdMovie, selectFavoriteMovie, selectWatchLaterMovie } =
-    useMovies();
+const CardMovie = ({ movie }: CardMovieProps) => {
+  const {
+    setIdMovie,
+    selectFavoriteMovie,
+    selectWatchLaterMovie,
+    deleteFavoriteMovie,
+    deleteWatchLaterMovie,
+  } = useMovies();
 
   const { user } = useAuth();
+
+  const location = useLocation();
 
   const handleAddToFavorites = async (movie: Movie, uid: string) => {
     try {
@@ -45,6 +60,44 @@ const CardMovie = ({ movie, isHome = false }: CardMovieProps) => {
       toast.success(`${movie.original_title} Added to watch later`);
     } catch (error) {
       if (error instanceof FirebaseError) {
+        console.log(error.code);
+        const errorMessage = handleFirebaseError(error);
+        toast.error(errorMessage);
+        console.log(errorMessage);
+      } else {
+        const msgError =
+          error instanceof Error ? error.message : 'An error occurred';
+        toast.error(msgError);
+      }
+    }
+  };
+
+  const handleDeleteFavorite = async (uid: string) => {
+    try {
+      await deleteFavoriteMovie!(uid);
+
+      toast.success('Movie removed from favorites');
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        console.log(error.code);
+        const errorMessage = handleFirebaseError(error);
+        toast.error(errorMessage);
+      } else {
+        const msgError =
+          error instanceof Error ? error.message : 'An error occurred';
+        toast.error(msgError);
+      }
+    }
+  };
+
+  const handleDeleteCollection = async (uid: string) => {
+    try {
+      await deleteWatchLaterMovie!(uid);
+
+      toast.success('Movie removed from watch list');
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        console.log(error.code);
         const errorMessage = handleFirebaseError(error);
         toast.error(errorMessage);
       } else {
@@ -56,7 +109,7 @@ const CardMovie = ({ movie, isHome = false }: CardMovieProps) => {
   };
 
   return (
-    <div className="relative w-full h-52 bg-cover bg-center rounded-lg overflow-hidden card-container">
+    <div className="relative w-full h-72 bg-cover bg-center rounded-lg overflow-hidden card-container">
       <img
         className="absolute inset-0 w-full h-full object-cover"
         src={
@@ -73,7 +126,7 @@ const CardMovie = ({ movie, isHome = false }: CardMovieProps) => {
           </h2>
         </div>
         <div className="flex justify-between px-4">
-          {isHome && (
+          {location.pathname === '/' && (
             <>
               <IconButton
                 icon={<AddSvg />}
@@ -90,10 +143,36 @@ const CardMovie = ({ movie, isHome = false }: CardMovieProps) => {
             </>
           )}
 
+          {location.pathname === '/favorites' && (
+            <IconButton
+              icon={<NoFavoriteSvg />}
+              tooltip="Remove to favorites"
+              direction="tooltip-right"
+              action={() => {
+                if (movie.uid) {
+                  handleDeleteFavorite(movie.uid);
+                }
+              }}
+            />
+          )}
+
+          {location.pathname === '/watch_list' && (
+            <IconButton
+              icon={<RemoveSvg />}
+              tooltip="Remove to watch list"
+              direction="tooltip-right"
+              action={() => {
+                if (movie.uid) {
+                  handleDeleteCollection(movie.uid);
+                }
+              }}
+            />
+          )}
+
           <IconButton
             icon={<DotSvg />}
             tooltip="More information"
-            direction={isHome ? 'tooltip-left' : 'tooltip-right'}
+            direction="tooltip-left"
             action={() => {
               (
                 document.getElementById('my_modal_4') as HTMLDialogElement

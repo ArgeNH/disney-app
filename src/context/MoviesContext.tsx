@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext, useState, useEffect } from 'react';
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+} from 'firebase/firestore';
 import type { PropsWithChildren } from 'react';
 
 import { Movie } from '../types';
@@ -14,6 +20,8 @@ type MoviesContextType = {
   setIdMovie?: React.Dispatch<React.SetStateAction<number | null>>;
   selectFavoriteMovie?: (movie: Movie, uid: string) => Promise<void>;
   selectWatchLaterMovie?: (movie: Movie, uid: string) => Promise<void>;
+  deleteFavoriteMovie?: (id: string) => Promise<void>;
+  deleteWatchLaterMovie?: (id: string) => Promise<void>;
 };
 
 const initialValue: MoviesContextType = {
@@ -23,6 +31,8 @@ const initialValue: MoviesContextType = {
   setIdMovie: () => {},
   selectFavoriteMovie: async () => {},
   selectWatchLaterMovie: async () => {},
+  deleteFavoriteMovie: async () => {},
+  deleteWatchLaterMovie: async () => {},
 };
 
 export const MoviesContext = createContext<MoviesContextType>(initialValue);
@@ -76,7 +86,10 @@ export const MoviesProvider = ({ children }: PropsWithChildren) => {
     const queryFavorites = collection(db, `users/${uid}/favorite`);
 
     const docs = await getDocs(queryFavorites);
-    const movies = docs.docs.map((doc) => doc.data()) as Movie[];
+    const movies = docs.docs.map((doc) => ({
+      uid: doc.id,
+      ...doc.data(),
+    })) as Movie[];
 
     setFavoriteMovies(movies);
   };
@@ -85,9 +98,26 @@ export const MoviesProvider = ({ children }: PropsWithChildren) => {
     const queryWatchLater = collection(db, `users/${uid}/watchLater`);
 
     const docs = await getDocs(queryWatchLater);
-    const movies = docs.docs.map((doc) => doc.data()) as Movie[];
+    const movies = docs.docs.map((doc) => ({
+      uid: doc.id,
+      ...doc.data(),
+    })) as Movie[];
 
     setWatchLaterMovies(movies);
+  };
+
+  const deleteFavoriteMovie = async (uid: string) => {
+    const query = doc(collection(db, `users/${user?.uid}/favorite`), uid);
+    await deleteDoc(query);
+
+    setFavoriteMovies((prev) => prev.filter((movie) => movie.uid !== uid));
+  };
+
+  const deleteWatchLaterMovie = async (uid: string) => {
+    const query = doc(collection(db, `users/${user?.uid}/watchLater`), uid);
+    await deleteDoc(query);
+
+    setWatchLaterMovies((prev) => prev.filter((movie) => movie.uid !== uid));
   };
 
   useEffect(() => {
@@ -106,6 +136,8 @@ export const MoviesProvider = ({ children }: PropsWithChildren) => {
         watchLaterMovies,
         selectFavoriteMovie,
         selectWatchLaterMovie,
+        deleteFavoriteMovie,
+        deleteWatchLaterMovie,
       }}
     >
       {children}

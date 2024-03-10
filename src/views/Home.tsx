@@ -78,7 +78,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 w-full h-screen md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 w-full h-full md:grid-cols-4">
             {movies.map((movie) => (
               <CardMovie key={movie.id} movie={movie} isHome />
             ))}

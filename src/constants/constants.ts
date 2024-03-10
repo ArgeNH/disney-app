@@ -13,7 +13,7 @@ export const IMAGE_URL = import.meta.env.VITE_IMAGES_URL;
 export type CategoryType = {
   id: number;
   name: string;
-  Icon?: () => JSX.Element;
+  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 };
 
 export const CATEGORIES: CategoryType[] = [

@@ -26,7 +26,6 @@ const Register = () => {
       navigate('/');
     } catch (error) {
       if (error instanceof FirebaseError) {
-        console.log(error.code);
         const errorMessage = handleFirebaseError(error);
         toast.error(errorMessage);
       } else {
