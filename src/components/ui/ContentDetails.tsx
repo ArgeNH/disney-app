@@ -53,7 +53,7 @@ const ContentDetails = () => {
                 src={
                   movieDetail?.poster_path
                     ? `${IMAGE_URL}${movieDetail?.poster_path}`
-                    : '/public/noimage.jpeg'
+                    : '/noimage.jpeg'
                 }
                 className="max-w-56 rounded-lg shadow-2xl lg:max-w-md"
               />

@@ -1,4 +1,4 @@
-const ComedySvg = () => (
+export const ComedySvg = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="icon icon-tabler icon-tabler-mood-smile-beam"
@@ -16,4 +16,3 @@ const ComedySvg = () => (
     <path d="M10 10c-.5-1-2.5-1-3 0m10 0c-.5-1-2.5-1-3 0m.5 5a3.5 3.5 0 0 1-5 0" />
   </svg>
 );
-export default ComedySvg;

@@ -23,4 +23,6 @@ export type Movie = {
   poster_path?: string;
   overview?: string;
   release_date?: string;
+  isFavorite?: boolean;
+  isWatchLater?: boolean;
 };

@@ -1,4 +1,4 @@
-const AddSvg = () => (
+export const AddSvg = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18"
@@ -15,4 +15,3 @@ const AddSvg = () => (
     <path d="M5 12l14 0" />
   </svg>
 );
-export default AddSvg;

@@ -41,7 +41,7 @@ const ContentCategory = ({ selectCategory }: ContentCategoryProps) => {
       <h1 className="text-2xl font-bold">{selectCategory?.name}</h1>
 
       {!loading ? (
-        <div className="grid grid-cols-1 gap-4 w-full h-screen md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 w-full h-full md:grid-cols-4">
           {moviesCategory.map((movie) => (
             <CardMovie key={movie.id} movie={movie} />
           ))}
